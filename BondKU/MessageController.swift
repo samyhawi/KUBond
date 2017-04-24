@@ -35,16 +35,10 @@ class MessageController: UITableViewController{
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = UserDatabase(dic: dictionary)
                 
-                //if you use this setter, your app will crash if your class properties don't exactly match up with the firebase dictionary keys
-                user.setValuesForKeys(dictionary)
+                 user.setValuesForKeys(dictionary)
                 self.users.append(user)
                 
-//                //this will crash because of background thread, so lets use dispatch_async to fix
-//                DispatchQueue.main.async(execute: {
-//                    self.tableView.reloadData()
-//                })
-//                
-                //                user.name = dictionary["name"]
+
             }
             
         }, withCancel: nil)
@@ -57,7 +51,7 @@ class MessageController: UITableViewController{
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      //  let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
+
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         
